@@ -35,7 +35,19 @@ python opencode_local_api.py
 pythonw opencode_local_api.py
 ```
 
-You can even add a `.vbs` script pointing to this file in your Windows `Startup` folder so your API awakens every time you turn on your Laptop!
+## 🚀 Auto-Start on Windows Boot (Set it and Forget it!)
+If you want this API server to wake up silently in the background every time you turn on your computer (so you never have to manually run it again), follow these steps:
+
+1. Press `Win + R`, type `shell:startup`, and hit Enter. This opens the Windows Startup folder.
+2. In that folder, right-click -> New -> Text Document. Name it `opencode_startup.vbs` (make sure the extension is `.vbs` and not `.txt`).
+3. Right-click, select **Edit**, and paste the following code (make sure to replace `D:\Private\opencode-local-api` with your actual repo path):
+
+```vbscript
+Set WshShell = CreateObject("WScript.Shell")
+WshShell.CurrentDirectory = "D:\Private\opencode-local-api"
+WshShell.Run "pythonw.exe opencode_local_api.py", 0, False
+```
+Save and close! Now your API background terminal will automatically run invisibly every time you boot up!
 
 ## 🤖 The LLM Prompt (Crucial Step)
 Every time you start a **New Session / Chat** in OpenCode, its memory resets. Simply copy and paste the following prompt block as your **very first message** to automatically load the API powers into the Agent:

@@ -11,10 +11,11 @@ Since OpenCode is currently new and still catching up with IDE integrations, it 
 This **Local API Script (`opencode_local_api.py`)** acts as an autonomous bridge. By running this script locally, you give your LLM Agent "Super-Powers" to autonomously manage the file system, execute background scripts safely, and browse the internet.
 
 ## Features ✨
-1. **Windows UI Safety Permission**: An `Alt+Enter` GUI Box will pop up on your Windows desktop before the LLM can execute any shell command or edit a file. Stay safe!
-2. **Background Task Runner (`/run_background`)**: Start scripts like Python bots, Scrapers, or AWS SSH commands, and return immediately to avoid a context-timeout hang. 
-3. **Live Web Search (`/search`)**: Empowers the LLM with Live Google/Duckduckgo search data.
-4. **Direct Read & Write File API**: Edit codebase safely using API rather than cumbersome bash commands.
+1. **Safe Local Terminal Access (`/run`)**: The core feature! Allows your Agent to run full shell/terminal commands directly on your PC, completely silently without annoying black CMD windows popping up on your screen.
+2. **Windows UI Safety Permission**: An `Alt+Enter` GUI Box will pop up on your Windows desktop before the LLM can execute any terminal command or edit a file. You are always in control!
+3. **Background Task Runner (`/run_background`)**: Start long-running servers (like localhost or web scrapers) and return immediately. This solves the major issue where LLM agents "hang" or freeze forever when they try to start a server.
+4. **Live Web Search (`/search`)**: Empowers the LLM with Live Google/Duckduckgo search data.
+5. **Direct Read & Write File API (`/read_file`, `/write_file`)**: Edit your codebase safely using exact API endpoints rather than cumbersome bash commands which LLMs usually mess up.
 
 ## Installation 🛠️
 1. Clone the repository and install dependencies:

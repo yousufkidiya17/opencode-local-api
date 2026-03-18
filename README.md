@@ -1,5 +1,12 @@
-# OpenCode Local Agent API 🚀
+# OpenCode Local Agent API 🚀🔥
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/yousufkidiya17/opencode-local-api?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/yousufkidiya17/opencode-local-api?style=flat-square)
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=flat-square)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
+<p align="left">
+  <img src="https://komarev.com/ghpvc/?username=yousufkidiya17&label=Views&color=blue&style=flat-square" alt="yousufkidiya17" />
+</p>
 Welcome to the **OpenCode Local API Setup Guide**. This repository is built specifically for users of the new [OpenCode](https://opencode.ai) desktop app or any similar locally working LLM Desktop clients (like Big Pickle, GPT-5 Nano, MiMo V2, etc.).
 
 Since OpenCode is currently new and still catching up with IDE integrations, it often faces issues such as:

@@ -119,7 +119,9 @@ def search_web():
     if not data or 'query' not in data: return jsonify({'error': 'No query provided'}), 400
     provider = data.get('provider')
     limit = data.get('limit', 5)
-    use_tavily = (provider == 'tavily' and tavily_client) or (provider is None and tavily_client)
+    if provider == 'tavily' and not tavily_client:
+        return jsonify({'status': 'error', 'error': 'Tavily provider requested but TAVILY_API_KEY is not configured'}), 503
+    use_tavily = tavily_client and provider in (None, 'tavily')
     try:
         if use_tavily:
             response = tavily_client.search(query=data['query'], max_results=limit)

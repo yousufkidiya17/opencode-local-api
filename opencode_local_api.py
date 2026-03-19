@@ -5,8 +5,12 @@ import os
 import threading
 import time
 from ddgs import DDGS
+from tavily import TavilyClient
 
 app = Flask(__name__)
+
+TAVILY_API_KEY = os.environ.get('TAVILY_API_KEY')
+tavily_client = TavilyClient(api_key=TAVILY_API_KEY) if TAVILY_API_KEY else None
 
 background_tasks = {}
 
@@ -113,9 +117,17 @@ def write_file():
 def search_web():
     data = request.get_json()
     if not data or 'query' not in data: return jsonify({'error': 'No query provided'}), 400
+    provider = data.get('provider')
+    limit = data.get('limit', 5)
+    use_tavily = (provider == 'tavily' and tavily_client) or (provider is None and tavily_client)
     try:
-        results = DDGS().text(data['query'], max_results=data.get('limit', 5))
-        return jsonify({'status': 'success', 'results': list(results)})
+        if use_tavily:
+            response = tavily_client.search(query=data['query'], max_results=limit)
+            results = [{'title': r['title'], 'href': r['url'], 'body': r['content']} for r in response['results']]
+            return jsonify({'status': 'success', 'results': results, 'provider': 'tavily'})
+        else:
+            results = DDGS().text(data['query'], max_results=limit)
+            return jsonify({'status': 'success', 'results': list(results), 'provider': 'duckduckgo'})
     except Exception as e:
         return jsonify({'status': 'error', 'error': str(e)}), 500
 

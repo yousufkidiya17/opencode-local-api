@@ -4,6 +4,7 @@ import tkinter as tk
 import os
 import threading
 import time
+import winsound
 from ddgs import DDGS
 
 app = Flask(__name__)
@@ -22,6 +23,11 @@ def get_creationflags():
 def ask_permission(cmd_or_action):
     result = {"allowed": False}
     
+    def play_notification():
+        try:
+            winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
+        except: pass
+    
     def on_run(event=None):
         result["allowed"] = True
         root.destroy()
@@ -29,7 +35,9 @@ def ask_permission(cmd_or_action):
     def on_cancel(event=None):
         result["allowed"] = False
         root.destroy()
-        
+    
+    threading.Thread(target=play_notification, daemon=True).start()
+    
     root = tk.Tk()
     root.title("OpenCode API Permission")
     window_width = 500

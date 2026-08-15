@@ -1,4 +1,4 @@
-# OpenCode Local Agent API ðŸš€ðŸ”¥
+# OpenCode Local Agent API 🚀🔥
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/yousufkidiya17/opencode-local-api?style=flat-square)
 ![GitHub license](https://img.shields.io/github/license/yousufkidiya17/opencode-local-api?style=flat-square)
@@ -17,14 +17,14 @@ Since OpenCode is currently new and still catching up with IDE integrations, it 
 
 This **Local API Script (`opencode_local_api.py`)** acts as an autonomous bridge. By running this script locally, you give your LLM Agent "Super-Powers" to autonomously manage the file system, execute background scripts safely, and browse the internet.
 
-## Features âœ¨
+## Features ✨
 1. **Safe Local Terminal Access (`/run`)**: The core feature! Allows your Agent to run full shell/terminal commands directly on your PC, completely silently without annoying black CMD windows popping up on your screen.
 2. **Windows UI Safety Permission**: An `Alt+Enter` GUI Box will pop up on your Windows desktop before the LLM can execute any terminal command or edit a file. You are always in control!
 3. **Background Task Runner (`/run_background`)**: Start long-running servers (like localhost or web scrapers) and return immediately. This solves the major issue where LLM agents "hang" or freeze forever when they try to start a server.
 4. **Live Web Search (`/search`)**: Empowers the LLM with Live Google/Duckduckgo search data.
 5. **Direct Read & Write File API (`/read_file`, `/write_file`)**: Edit your codebase safely using exact API endpoints rather than cumbersome bash commands which LLMs usually mess up.
 
-## Installation ðŸ› ï¸
+## Installation 🛠️
 1. Clone the repository and install dependencies:
 ```bash
 git clone https://github.com/yousufkidiya17/opencode-local-api.git
@@ -43,7 +43,7 @@ python opencode_local_api.py
 pythonw opencode_local_api.py
 ```
 
-## ðŸš€ Auto-Start on Windows Boot (Set it and Forget it!)
+## 🚀 Auto-Start on Windows Boot (Set it and Forget it!)
 If you want this API server to wake up silently in the background every time you turn on your computer (so you never have to manually run it again), follow these steps:
 
 1. Press `Win + R`, type `shell:startup`, and hit Enter. This opens the Windows Startup folder.
@@ -57,7 +57,7 @@ WshShell.Run "pythonw.exe opencode_local_api.py", 0, False
 ```
 Save and close! Now your API background terminal will automatically run invisibly every time you boot up!
 
-## ðŸ¤– The LLM Prompt (Crucial Step)
+## 🤖 The LLM Prompt (Crucial Step)
 Every time you start a **New Session / Chat** in OpenCode, its memory resets. Simply copy and paste the following prompt block as your **very first message** to automatically load the API powers into the Agent:
 
 ```text
